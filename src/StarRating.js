@@ -13,7 +13,8 @@ const starContainerStyle = {
 export default function StarRating({
     maxRating = 5,
     color = "#fcc419",
-    size = 48
+    size = 48,
+    className = ""
 }) {
     const [rating, setRating] = useState(0);
     const [tempRating, setTempRating] = useState(0);
@@ -29,7 +30,7 @@ export default function StarRating({
         fontSize: `${size / 1.5}px`
     };
     return (
-        <div style={containerStyle}>
+        <div style={containerStyle} className={className}>
             <div style={starContainerStyle}>
                 {Array.from({ length: maxRating }, (_, i) => (
                     <Star
@@ -85,7 +86,7 @@ function Star({ onRate, full, onHoverIn, onHoverOut, color, size }) {
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                     fill="none"
-                    stroke="#000"
+                    stroke={color}
                 >
                     <path
                         strokeLinecap="round"
